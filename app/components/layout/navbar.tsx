@@ -25,8 +25,6 @@ const Navbar = () => {
 
   const isAdmin = session && session?.user?.role !== "user" ? true : false
 
-  console.log(session)
-
   return (
     <header className="py-5 w-full px-5">
       <div className="flex-between">

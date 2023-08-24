@@ -1,8 +1,10 @@
 import { apiRoute } from "../config/config"
 
-export async function getBlog(id: number) {
+export async function getBlog(id: string) {
   const res = await fetch(`${apiRoute}/api/blogs/${id}`, {
-    cache: "no-store"
+    next: {
+      revalidate: 60
+    }
   })
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary

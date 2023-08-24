@@ -8,7 +8,7 @@ import PageContainer from '@/app/components/layout/pageContainer'
 import { apiRoute } from '@/app/config/config'
 
 
-export async function generateMetadata({params}: {params: {id: number}}) {
+export async function generateMetadata({params}: {params: {id: string}}) {
   const response = await getBlog(params.id)
   const data = response?.data
   if(!data) {
@@ -22,7 +22,7 @@ export async function generateMetadata({params}: {params: {id: number}}) {
   }
 }
 
-const BlogDetail = async ({params}: {params: {id: number}}) => {
+const BlogDetail = async ({params}: {params: {id: string}}) => {
     const response = await getBlog(params.id)
     const data: BlogTypes = response?.data
     if(!Array.isArray(data) && !data) {
@@ -80,12 +80,12 @@ const BlogDetail = async ({params}: {params: {id: number}}) => {
     )
 }
 
-// export async function generateStaticParams() {
-//   const res = await fetch(`${apiRoute}/api/blogs`)
-//   const data = await res.json()
-//   return data?.data?.map((data: BlogTypes) => ({
-//     id: data._id.toString(),
-//   }))
-// }
+export async function generateStaticParams() {
+  const res = await fetch(`${apiRoute}/api/blogs`)
+  const data = await res.json()
+  return data.data?.map((data: BlogTypes) => ({
+    id: data._id.toString(),
+  }))
+}
 
 export default BlogDetail

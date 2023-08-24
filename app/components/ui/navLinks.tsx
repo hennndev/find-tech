@@ -26,12 +26,6 @@ const NavLinks = ({isDesktop = false, isAdmin, closeNavbar}: PropsTypes) => {
       <p onClick={() => handleRoute("blogs")} className="nav-link w-max">
         Blogs
       </p>
-      <p onClick={() => handleRoute("courses")} className="nav-link w-max">
-        Courses
-      </p>
-      <p onClick={() => handleRoute("about")} className="nav-link w-max">
-        About
-      </p>
       {isAdmin && (
         <div className="relative">
           <div className="nav-link w-max hover:no-underline cursor-pointer flexx" onClick={() => setOpenDropdown(!openDropdown)}>
@@ -40,14 +34,8 @@ const NavLinks = ({isDesktop = false, isAdmin, closeNavbar}: PropsTypes) => {
           </div>
           {openDropdown && (
             <div className={`${isDesktop ? "absolute -bottom-14 -left-16 px-6 py-2.5 dark:bg-gray-800 bg-white shadow-md rounded-md flexx space-x-5" : "flex flex-col space-y-4 px-5 py-4"}`}>
-              <p onClick={() => handleRoute("admin/dashboard")} className="nav-link w-max text-base font-[600] text-gray-700">
-                {!isDesktop ? "#" : ""} Dashboard
-              </p>
               <p onClick={() => handleRoute("admin/blogs")} className="nav-link w-max text-base font-[600] text-gray-700">
                 {!isDesktop ? "#" : ""} Blogs
-              </p>
-              <p onClick={() => handleRoute("admin/courses")} className="nav-link w-max text-base font-[600] text-gray-700">
-                {!isDesktop ? "#" : ""} Courses
               </p>
               <p onClick={() => handleRoute("admin/users")} className="nav-link w-max text-base font-[600] text-gray-700 mb-0">
                 {!isDesktop ? "#" : ""} Users

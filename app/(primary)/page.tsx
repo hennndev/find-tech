@@ -1,12 +1,10 @@
 import React from 'react'
-import { authOptions } from '../api/auth/[...nextauth]/route'
-import { getServerSession } from 'next-auth'
-import Hero from '@/app/components/home/hero'
 import { getBlogs } from '@/app/lib/getBlogs'
+import Hero from '@/app/components/home/hero'
 import Blogs from '@/app/components/blogs/blogs'
-import BlogsEmpty from '../components/ui/blogsEmpty'
-import { BlogTypes } from '../types/BlogTypes.types'
 import Pagination from '@/app/components/ui/pagination'
+import { BlogTypes } from '@/app/types/BlogTypes.types'
+import BlogsEmpty from '@/app/components/ui/blogsEmpty'
 import RecentBlogs from '@/app/components/home/recentBlogs'
 import PageContainer from '@/app/components/layout/pageContainer'
 
@@ -17,10 +15,6 @@ export const metadata = {
 const HomePage = async () => {
   const response = await getBlogs()
   const blogsData: BlogTypes[] = response?.data
-  // const recentData = blogsData?.slice(0, 5)
-  // const session = await getServerSession(authOptions)
-
-
   return (
     <PageContainer>
       <Hero/>
@@ -37,5 +31,4 @@ const HomePage = async () => {
     </PageContainer>
   )
 }
-
 export default HomePage

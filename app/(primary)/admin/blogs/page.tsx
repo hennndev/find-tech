@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { getBlogs } from '@/app/lib/getBlogs'
+import { apiRoute } from '@/app/config/config'
 import Blogs from '@/app/components/blogs/blogs'
 import BlogsEmpty from '@/app/components/ui/blogsEmpty'
 import { BlogTypes } from '@/app/types/BlogTypes.types'
@@ -8,6 +8,15 @@ import PageContainer from '@/app/components/layout/pageContainer'
 
 export const metadata = {
   title: "Admin Blogs"
+}
+async function getBlogs() {
+  const res = await fetch(`${apiRoute}/api/blogs`)
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    return null
+  }
+ 
+  return res.json()
 }
 const AdminBlogsPage = async () => {
   const response = await getBlogs()
