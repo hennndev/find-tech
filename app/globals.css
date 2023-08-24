@@ -2,26 +2,123 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+    body {
+        font-family: var(--font-raleway);
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@layer utilities {
+    .font-inter {
+        font-family: var(--font-inter);
+    }
+    .scrollbar-thin {
+        scrollbar-width: thin;
+    }
+    .scrollbar-thin::-webkit-scrollbar {
+        display: block;
+        width: 4px;
+        height: 4px;
+    }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+
+
+
+@layer components {
+    /* layout */
+    .container {
+        @apply max-w-[1300px] mx-auto
+    }
+    .flexx {
+        @apply flex items-center
+    }
+    .flex-center {
+        @apply flex items-center justify-center
+    }
+    .flex-between {
+        @apply flex items-center justify-between
+    }
+    
+
+    /* navbar */
+    .nav-link {
+        @apply font-semibold dark:text-gray-200 dark:hover:text-blue-500 text-gray-700 hover:underline hover:text-blue-700 cursor-pointer
+    }
+    .nav-icon {
+        @apply text-xl dark:text-gray-200 text-gray-700 cursor-pointer
+    }
+
+    /* form */
+    .form-label {
+        @apply text-lg font-semibold mb-2 dark:text-gray-300 text-gray-700
+    }
+    .input-control {
+        @apply border border-[#ccc] text-gray-700 bg-transparent placeholder:text-gray-500 font-medium outline-none rounded-md px-3 py-2 text-sm
+    }
+    .error-input {
+        @apply dark:text-red-300 text-red-500 mt-2 text-sm font-semibold
+    }
+
+    /* button */
+    .buttonn {
+        @apply border border-transparent font-medium outline-none px-3 py-1 text-sm rounded-md transition duration-300 hover:bg-transparent
+    } 
+    .button-light {
+        @apply hover:border-gray-700 hover:text-gray-700 bg-gray-700 text-white
+    }
+    .button-dark {
+        @apply
+    }
+    .button {
+        @apply border border-transparent dark:hover:border-gray-500 dark:hover:text-gray-200 hover:border-gray-700 hover:bg-transparent hover:text-gray-700 font-medium outline-none bg-gray-700 text-white px-3 py-1 text-sm rounded-md transition duration-300
+    }
+    .button-platform {
+        @apply border border-gray-700 bg-transparent font-medium outline-none text-gray-700 px-3 py-1 rounded-md transition duration-300
+    }
+    .button-pagination {
+        @apply flexx border dark:border-gray-500 dark:text-gray-200 dark:hover:border-transparent border-gray-400 font-medium outline-none dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:bg-gray-700 hover:text-gray-200 bg-transparent text-gray-700 px-2 md:px-3 py-1 text-sm rounded-md transition duration-300
+    }
+    .button-primary {
+        @apply dark:bg-blue-500 bg-blue-700 dark:hover:bg-blue-700 hover:bg-blue-900 transition duration-300
+    }
+    .button-danger {
+        @apply dark:bg-red-500 dark:hover:bg-red-700 bg-red-700 hover:bg-red-900 transition duration-300
+    } 
+    .button-secondary {
+        @apply dark:bg-gray-500 dark:hover:bg-gray-700 bg-gray-700 hover:bg-gray-900 transition duration-300
+    }
+    .button-disabled {
+        @apply dark:!bg-gray-800 hover:bg-gray-400 hover:border-transparent bg-gray-400 dark:!text-gray-500 text-gray-100 cursor-not-allowed
+    }
+    .button-loading {
+        @apply inline-block h-5 w-5 animate-spin rounded-full border-[3px] border-solid border-current border-r-transparent motion-reduce:animate-[spin_1.5s_linear_infinite] mr-2
+    }
+
+
+
+
+    /* pagination */
+    .pagination-number {
+        @apply w-8 h-8 flex-center rounded-full dark:text-gray-200 dark:hover:bg-gray-700 text-gray-700 hover:bg-gray-700 hover:text-gray-200 cursor-pointer
+    }
+
+
+    /* categories */
+    .category {
+        @apply py-1 px-3 text-sm sm:text-base rounded-full border dark:hover:border-transparent hover:border-transparent hover:bg-gray-700 bg-transparent dark:border-gray-500 border-gray-400 cursor-pointer mr-2 sm:mr-3 mb-3 font-medium
+    }
+    .category-active {
+        @apply dark:bg-gray-700 bg-gray-700 border dark:border-transparent border-transparent hover:border-transparent
+    }
+    .category-text-active {
+        @apply dark:text-gray-200 text-gray-200
+    }
+    .category-text {
+        @apply text-sm font-medium group-hover:text-gray-200
+    }
+    .blog-category {
+        @apply border dark:text-gray-400 border-gray-400 rounded-full px-2 py-0.5 text-gray-700 text-xs font-semibold capitalize mr-2 mb-2
+    }
+    
 }

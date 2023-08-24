@@ -13,8 +13,15 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      gridTemplateColumns: {
+        'cards': 'repeat(auto-fill, minmax(300px, 1fr))',
+      }
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwind-scrollbar-hide"),
+    require("tailwind-scrollbar")
+  ],
+  darkMode: ["class"]
 }
 export default config
