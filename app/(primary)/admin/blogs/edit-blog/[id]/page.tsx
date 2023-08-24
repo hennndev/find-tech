@@ -10,7 +10,9 @@ export const metadata = {
 }
 
 async function getBlog(id: string) {
-  const res = await fetch(`${apiRoute}/api/blogs/${id}`)
+  const res = await fetch(`${apiRoute}/api/blogs/${id}`, {
+    cache: "no-store"
+  })
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     return null
