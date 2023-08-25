@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Link from 'next/link'
 import { HiUserAdd } from 'react-icons/hi'
 import { getServerSession } from 'next-auth'
 import ImageBox from '@/app/components/auth/imageBox'
 import ArrowBack from '@/app/components/auth/arrowBack'
 import SignupForm from '@/app/components/auth/signupForm'
-import PageContainer from '@/app/components/layout/pageContainer'
+import PageContainer from '@/app/components/wrapper/pageContainer'
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 
 export const metadata = {
@@ -13,10 +13,8 @@ export const metadata = {
 }
 
 const SignupPage = async () => {
-
   const session = await getServerSession(authOptions)
   const isLoggedIn = session?.user
-
   return (
     <PageContainer classes="lg:flex lg:items-center xl:flex-none min-h-screen md:pt-20 lg:pt-0 w-full px-3 lg:px-0">
       {isLoggedIn ? (
@@ -24,9 +22,9 @@ const SignupPage = async () => {
           <h2 className="dark:text-gray-200 text-gray-700 text-2xl font-bold mb-2">You has been logged in now</h2>
           <p className="dark:text-gray-200 text-gray-700 font-medium tracking-[0.5px] mb-7">You can back to home page by click this button.</p>
           <Link href="/" className="button text-base">Back to home</Link>
-      </section>
+        </section>
       ): (
-        <>
+        <Fragment>
           <ArrowBack/>
           <div className="flex-center w-full mb-10 lg:mb-0">
             <div className="flex w-full sm:w-[80%] lg:w-[90%] xl:w-[75%] h-[750px] xl:h-[650px] rounded-lg shadow-lg bg-white">
@@ -45,10 +43,9 @@ const SignupPage = async () => {
               </div>
             </div>
           </div>
-        </>
+        </Fragment>
       )}
     </PageContainer>
   )
 }
-
 export default SignupPage

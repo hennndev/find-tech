@@ -5,7 +5,6 @@ type PropsTypes = {
     children: React.ReactNode
     classes?: string
 }
-
 const PageContainer = ({children, classes = ""}: PropsTypes) => {
     return (
         <section className={classes}>
@@ -13,5 +12,4 @@ const PageContainer = ({children, classes = ""}: PropsTypes) => {
         </section>
     )
 }
-
 export default PageContainer

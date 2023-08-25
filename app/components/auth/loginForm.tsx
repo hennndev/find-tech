@@ -11,13 +11,12 @@ type FormValues = {
   email: string
   password: string
 }
-
 const LoginForm = () => {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isError, setIsError] = useState<null | string>(null)
   const [showPassword, setShowPassword] = useState<boolean>(false)
-  const { register, handleSubmit, reset, formState: {errors} } = useForm<FormValues>()
+  const { register, handleSubmit, formState: {errors}} = useForm<FormValues>()
 
   const onSubmit = async (data: FormValues) => {
     setIsLoading(true)
@@ -46,13 +45,13 @@ const LoginForm = () => {
       <div className="text-center mb-7">
         <h1 className="text-4xl text-gray-700 font-bold">Login</h1>
         <p className="font-medium tracking-[0.5px] mt-2 text-gray-700">Enter your personal details</p>
-        {isError && (
+        {isError ? (
           <AlertMessage classes="mt-2" handleClose={() => setIsError(null)}>
             <p className="text-start font-medium text-gray-700">{isError}</p>
           </AlertMessage>
-        )}
+        ):null}
       </div>
-      {/* email */}
+  
       <div className="flex flex-col mb-5">
         <label htmlFor="email" className="mb-2 text-gray-700 font-semibold text-lg">Email</label>
         <input type="email" id="email" 
@@ -71,8 +70,6 @@ const LoginForm = () => {
         )}
       </div>
 
-
-      {/* password */}
       <div className="flex flex-col">
         <label htmlFor="password" className="mb-2 text-gray-700 font-semibold text-lg">Password</label>
         <div className="border border-[#ccc] text-gray-700 bg-white font-medium rounded-md px-3 py-2 flexx">
@@ -88,19 +85,18 @@ const LoginForm = () => {
               }
             })}
             className="flex-1 mr-2 bg-transparent outline-none placeholder:text-gray-500 text-sm"/>
-            {!showPassword ? <AiOutlineEyeInvisible className="text-xl cursor-pointer text-gray-700" onClick={() => handleShowPassword(true)}/> : <AiOutlineEye className="text-xl cursor-pointer text-gray-700" onClick={() => handleShowPassword(false)}/>}
+          {!showPassword ? <AiOutlineEyeInvisible className="text-xl cursor-pointer text-gray-700" onClick={() => handleShowPassword(true)}/> : <AiOutlineEye className="text-xl cursor-pointer text-gray-700" onClick={() => handleShowPassword(false)}/>}
         </div>
-
         {errors.password?.message && (
           <small className="error-input dark:text-red-700">{errors.password?.message}</small>
         )}
       </div>
-      <button type="submit" disabled={isLoading} className={`buttonn w-full mt-5 text-base flex-center ${isLoading ? "bg-gray-500 text-gray-200 cursor-not-allowed hover:bg-gray-500 hover:text-gray-200" : "button-light"}`}>
+      <button type="submit" disabled={isLoading} className={`button w-full mt-5 text-base flex-center ${isLoading ? "button-disabled" : "button-light"}`}>
         {isLoading && <div className="button-loading"></div>}
         {isLoading ? "Waiting..." : "Submit"}
       </button>
-      <button type="button" className="button-platform flex-center mt-4 w-full" onClick={loginGoogle}>
-        Sign with Google <FcGoogle className="ml-3 text-[25px]"/>
+      <button type="button" disabled={isLoading} className="button-platform" onClick={loginGoogle}>
+        Sign with Google <FcGoogle className="ml-2 text-[25px]"/>
       </button>
     </form>
   )

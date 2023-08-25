@@ -1,11 +1,10 @@
 import NextAuth from 'next-auth/next'
 import bcrypt from 'bcryptjs'
-import { Awaitable, NextAuthOptions, User } from 'next-auth'
+import { NextAuthOptions } from 'next-auth'
 import { connectDB } from '@/app/lib/mongoose'
 import { Users } from '@/app/lib/models/user.model'
-import GoogleProvider, { GoogleProfile } from 'next-auth/providers/google'
+import GoogleProvider from 'next-auth/providers/google'
 import CredentialsProvider from 'next-auth/providers/credentials'
-
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -77,7 +76,5 @@ export const authOptions: NextAuthOptions = {
   }
 }
 
-
 const handler = NextAuth(authOptions)
-
 export { handler as GET, handler as POST }

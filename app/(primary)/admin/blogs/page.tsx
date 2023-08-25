@@ -4,7 +4,7 @@ import { apiRoute } from '@/app/config/config'
 import Blogs from '@/app/components/blogs/blogs'
 import BlogsEmpty from '@/app/components/ui/blogsEmpty'
 import { BlogTypes } from '@/app/types/BlogTypes.types'
-import PageContainer from '@/app/components/layout/pageContainer'
+import PageContainer from '@/app/components/wrapper/pageContainer'
 
 export const metadata = {
   title: "Admin Blogs"

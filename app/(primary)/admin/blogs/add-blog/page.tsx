@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import BlogForm from '@/app/components/admin/blogForm'
-import PageContainer from '@/app/components/layout/pageContainer'
+import PageContainer from '@/app/components/wrapper/pageContainer'
 
 export const metadata = {
   title: "Add New Blog"

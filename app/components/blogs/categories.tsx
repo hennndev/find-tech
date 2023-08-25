@@ -6,10 +6,8 @@ import { useRouter, usePathname } from 'next/navigation'
 const Categories = () => {
   const router = useRouter()
   const pathname = usePathname()
-  const onClick = (path?: string) => {
-    router.push(`/blogs${path}`)
-  }
   const isPathname = pathname.split("/").reverse()[0]
+  const onClick = (path?: string) => router.push(`/blogs${path}`)
 
   return (
     <section className="flex-center mt-10">
@@ -26,5 +24,4 @@ const Categories = () => {
     </section>
   )
 }
-
 export default Categories

@@ -61,20 +61,17 @@
     }
 
     /* button */
-    .buttonn {
-        @apply border border-transparent font-medium outline-none px-3 py-1 text-sm rounded-md transition duration-300 hover:bg-transparent
+    .button {
+        @apply border border-transparent font-medium outline-none px-3 py-1 text-sm rounded-md transition duration-300 hover:bg-transparent text-white
     } 
     .button-light {
-        @apply hover:border-gray-700 hover:text-gray-700 bg-gray-700 text-white
+        @apply hover:border-gray-700 hover:text-gray-700 bg-gray-700
     }
     .button-dark {
-        @apply
-    }
-    .button {
-        @apply border border-transparent dark:hover:border-gray-500 dark:hover:text-gray-200 hover:border-gray-700 hover:bg-transparent hover:text-gray-700 font-medium outline-none bg-gray-700 text-white px-3 py-1 text-sm rounded-md transition duration-300
+        @apply dark:hover:border-gray-500 dark:hover:text-gray-200 bg-gray-700
     }
     .button-platform {
-        @apply border border-gray-700 bg-transparent font-medium outline-none text-gray-700 px-3 py-1 rounded-md transition duration-300
+        @apply border border-gray-700 bg-transparent font-medium outline-none text-gray-700 px-3 py-1 rounded-md flex-center mt-4 w-full hover:bg-red-800 hover:text-white hover:border-transparent transition duration-300
     }
     .button-pagination {
         @apply flexx border dark:border-gray-500 dark:text-gray-200 dark:hover:border-transparent border-gray-400 font-medium outline-none dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:bg-gray-700 hover:text-gray-200 bg-transparent text-gray-700 px-2 md:px-3 py-1 text-sm rounded-md transition duration-300
@@ -89,7 +86,7 @@
         @apply dark:bg-gray-500 dark:hover:bg-gray-700 bg-gray-700 hover:bg-gray-900 transition duration-300
     }
     .button-disabled {
-        @apply dark:!bg-gray-800 hover:bg-gray-400 hover:border-transparent bg-gray-400 dark:!text-gray-500 text-gray-100 cursor-not-allowed
+        @apply dark:bg-gray-800 hover:bg-gray-500 border-transparent bg-gray-500 dark:text-gray-500 text-gray-100 cursor-not-allowed
     }
     .button-loading {
         @apply inline-block h-5 w-5 animate-spin rounded-full border-[3px] border-solid border-current border-r-transparent motion-reduce:animate-[spin_1.5s_linear_infinite] mr-2
@@ -118,7 +115,7 @@
         @apply text-sm font-medium group-hover:text-gray-200
     }
     .blog-category {
-        @apply border dark:text-gray-400 border-gray-400 rounded-full px-2 py-0.5 text-gray-700 text-xs font-semibold capitalize mr-2 mb-2
+        @apply border dark:text-gray-400 border-gray-400 rounded-full px-2 py-0.5 text-gray-700 text-xs font-semibold capitalize mr-1 mb-2
     }
     
 }

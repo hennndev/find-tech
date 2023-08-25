@@ -17,7 +17,7 @@ const Hero = () => {
       <div className="flex-center">
         <div className={`flexx w-[500px] mt-7 border ${isFocus ? "dark:border-gray-600 border-gray-400 border-2" : "dark:border-gray-600 border-[#ccc]"} pl-3 pr-1 rounded-lg`}>
           <input onFocus={onFocus} onBlur={onBlur} type="text" placeholder="Type your email" className="bg-transparent border-none outline-none flex-1 py-3.5 mr-3 dark:text-gray-200 text-gray-700 dark:placeholder:text-gray-200 placeholder:text-gray-700"/>
-          <button className="text-base px-3 py-2 button">
+          <button className="text-base px-3 py-2 button button-dark button-light">
             Subscribe
           </button>
         </div>

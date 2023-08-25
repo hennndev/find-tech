@@ -4,12 +4,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { HiArrowNarrowLeft } from 'react-icons/hi'
 
-const imageBox = () => {
+const ImageBox = () => {
   return (
     <div className="hidden lg:flex flex-col flex-[0.5] bg-gray-700 rounded-s-lg">
       <div className="relative h-[400px]">
         <Image src="/imgs/auth-img.png" 
-          alt="login-image" 
+          alt="auth-image" 
           fill
           sizes="auto"
           quality={75}
@@ -26,5 +26,4 @@ const imageBox = () => {
     </div>
   )
 }
-
-export default imageBox
+export default ImageBox

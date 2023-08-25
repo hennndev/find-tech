@@ -1,15 +1,10 @@
-import { apiRoute } from "../config/config"
-
+import { apiRoute } from "@/app/config/config"
 export async function getBlogs() {
   const res = await fetch(`${apiRoute}/api/blogs`, {
     next: {
       revalidate: 60
     }
   })
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    return null
-  }
- 
+  if (!res.ok) return null
   return res.json()
 }

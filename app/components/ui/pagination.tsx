@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi'
 

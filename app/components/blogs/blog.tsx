@@ -27,7 +27,7 @@ const Blog = ({data}: PropsTypes) => {
           <span>&middot;</span> {" "} 
           {moment(data.createdAt).startOf('day').fromNow()}
         </p>
-        <div className="mt-1 mb-3 dark:text-gray-200 text-gray-700">
+        <div className="mt-1 mb-2 dark:text-gray-200 text-gray-700">
           <h2 className="text-xl font-[800] mb-1 group-hover:underline group-hover:text-blue-600">{data.blogTitle}</h2>
           <p className="text-sm font-semibold dark:text-gray-400 text-gray-600 leading-[1.7] line-clamp-3">{data.blogDescriptions[0].descriptionContent}</p>
         </div>
@@ -42,5 +42,4 @@ const Blog = ({data}: PropsTypes) => {
     </div>
   )
 }
-
 export default Blog

@@ -6,12 +6,11 @@ import Pagination from '@/app/components/ui/pagination'
 import { BlogTypes } from '@/app/types/BlogTypes.types'
 import BlogsEmpty from '@/app/components/ui/blogsEmpty'
 import RecentBlogs from '@/app/components/home/recentBlogs'
-import PageContainer from '@/app/components/layout/pageContainer'
+import PageContainer from '@/app/components/wrapper/pageContainer'
 
 export const metadata = {
   title: "Home Page"
 }
-
 const HomePage = async () => {
   const response = await getBlogs()
   const blogsData: BlogTypes[] = response?.data

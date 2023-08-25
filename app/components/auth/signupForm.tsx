@@ -1,10 +1,10 @@
 "use client"
 import React, { useState } from 'react'
+import { signIn } from 'next-auth/react'
 import { FcGoogle } from 'react-icons/fc'
 import { useForm } from 'react-hook-form'
-import AlertMessage from '../ui/alertMessage'
-import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import AlertMessage from '../ui/alertMessage'
 import { apiRoute } from '@/app/config/config'
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai'
 
@@ -14,7 +14,6 @@ type FormValues = {
   password: string
   passwordConfirmation: string
 }
-
 const SignupForm = () => {  
   const router = useRouter()
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -146,11 +145,11 @@ const SignupForm = () => {
           <small className="error-input dark:text-red-700">{errors.passwordConfirmation?.message}</small>
         )}
       </div>
-      <button type="submit" disabled={isLoading} className={`buttonn w-full mt-5 text-base flex-center ${isLoading ? "bg-gray-500 text-gray-200 cursor-not-allowed hover:bg-gray-500 hover:text-gray-200" : "button-light"}`}>
+      <button type="submit" disabled={isLoading} className={`button w-full mt-5 text-base flex-center ${isLoading ? "button-disabled" : "button-light"}`}>
         {isLoading && <div className="button-loading"></div>}
         {isLoading ? "Waiting..." : "Submit"}
       </button>
-      <button type="button" className="button-platform flex-center mt-4 w-full" onClick={loginGoogle}>
+      <button type="button" className="button-platform" onClick={loginGoogle}>
         Sign with Google <FcGoogle className="ml-3 text-[25px]"/>
       </button>
     </form>

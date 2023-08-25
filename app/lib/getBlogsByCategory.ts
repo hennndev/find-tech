@@ -6,10 +6,6 @@ export async function getBlogsByCategory(cty: string) {
       revalidate: 60
     }
   })
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    return null
-  }
- 
+  if (!res.ok) return null
   return res.json()
 }

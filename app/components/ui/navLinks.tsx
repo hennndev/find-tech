@@ -1,12 +1,11 @@
 "use client"
-import React, { useState } from 'react'
-import Link from 'next/link'
+import React, { useState, Fragment } from 'react'
 import { useRouter } from 'next/navigation'
 import { HiChevronDown, HiChevronUp } from 'react-icons/hi'
 
 type PropsTypes = {
-  isDesktop?: boolean,
   isAdmin: boolean
+  isDesktop?: boolean,
   closeNavbar: () => void
 }
 
@@ -19,7 +18,7 @@ const NavLinks = ({isDesktop = false, isAdmin, closeNavbar}: PropsTypes) => {
     closeNavbar()
   }
   return (
-    <>
+    <Fragment>
       <p onClick={() => handleRoute("")} className="nav-link w-max">
         Home
       </p>
@@ -44,7 +43,7 @@ const NavLinks = ({isDesktop = false, isAdmin, closeNavbar}: PropsTypes) => {
           )}
         </div>
       )}
-    </>
+    </Fragment>
   )
 }
 

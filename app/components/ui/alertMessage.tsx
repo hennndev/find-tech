@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 type PropsTypes = {
@@ -6,7 +7,6 @@ type PropsTypes = {
   isSuccess?: boolean
   handleClose: () => void
 }
-
 const AlertMessage = ({children, classes, isSuccess, handleClose}: PropsTypes) => {
   return (
     <div className={`relative border ${isSuccess ? "border-green-600 bg-green-300" : "border-red-600 bg-red-300"} p-3 rounded-md ${classes ? classes : ""}`}>
@@ -15,5 +15,4 @@ const AlertMessage = ({children, classes, isSuccess, handleClose}: PropsTypes) =
     </div>
   )
 }
-
 export default AlertMessage

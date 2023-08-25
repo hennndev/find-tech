@@ -16,5 +16,4 @@ const PrimaryLayout = ({children}: {children: React.ReactNode}) => {
     </ThemeProvider>
   )
 }
-
 export default PrimaryLayout

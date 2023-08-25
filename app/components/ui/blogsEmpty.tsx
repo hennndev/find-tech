@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 
 const BlogsEmpty = () => {
@@ -7,5 +8,4 @@ const BlogsEmpty = () => {
     </div>
   )
 }
-
 export default BlogsEmpty

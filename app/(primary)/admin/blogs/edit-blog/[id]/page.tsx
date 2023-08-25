@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { apiRoute } from '@/app/config/config'
 import BlogForm from '@/app/components/admin/blogForm'
 import { BlogTypes } from '@/app/types/BlogTypes.types'
-import PageContainer from '@/app/components/layout/pageContainer'
+import PageContainer from '@/app/components/wrapper/pageContainer'
 
 export const metadata = {
   title: "Edit blog"
