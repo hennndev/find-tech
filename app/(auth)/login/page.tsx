@@ -20,7 +20,7 @@ const LoginPage = async () => {
         <section className="flex-center flex-col w-full h-full text-center -mt-20">
           <h2 className="dark:text-gray-200 text-gray-700 text-2xl font-bold mb-2">You has been logged in now</h2>
           <p className="dark:text-gray-200 text-gray-700 font-medium tracking-[0.5px] mb-7">You can back to home page by click this button.</p>
-          <Link href="/" className="button text-base">Back to home</Link>
+          <Link href="/" className="button button-light text-base">Back to home</Link>
       </section>
       ) : (
         <Fragment>
