@@ -8,32 +8,36 @@ export const categoriesData = [
         path: "programming"
     },
     {
+        name: "Technology",
+        path: "technology"
+    },
+    {
+        name: "Web Development",
+        path: "web-development"
+    },
+    {
+        name: "App Development",
+        path: "app-development"
+    },
+    {
+        name: "Frontend Programming",
+        path: "frontend-programming"
+    },
+    {
+        name: "Backend Programming",
+        path: "backend-programming"
+    },
+    {
+        name: "Design",
+        path: "design"
+    },
+    {
         name: "Web Design",
         path: "web-design"
     },
     {
-        name: "Figma",
-        path: "figma"
-    },
-    {
-        name: "UI UX",
-        path: "UI-UX"
-    },
-    {
-        name: "Javascript",
-        path: "javascript"
-    },
-    {
-        name: "Wireframe",
-        path: "wireframe"
-    },
-    {
-        name: "Typescript",
-        path: "typescript"
-    },
-    {
-        name: "NodeJS",
-        path: "nodejs"
+        name: "UI-UX",
+        path: "ui-ux"
     },
     {
         name: "Graphic Design",
@@ -43,4 +47,20 @@ export const categoriesData = [
         name: "3D Design",
         path: "3d-design"
     },
+    {
+        name: "Figma",
+        path: "figma"
+    },
+    {
+        name: "ReactJS",
+        path: "reactjs"
+    },
+    {
+        name: "NextJS",
+        path: "nextjs"
+    },
+    {
+        name: "NodeJS",
+        path: "nodejs"
+    }
 ]

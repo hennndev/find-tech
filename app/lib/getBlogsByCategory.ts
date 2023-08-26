@@ -1,5 +1,4 @@
 import { apiRoute } from "../config/config"
-
 export async function getBlogsByCategory(cty: string) {
   const res = await fetch(`${apiRoute}/api/blogs/category/${cty}`, {
     next: {

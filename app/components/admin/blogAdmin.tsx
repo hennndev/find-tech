@@ -61,7 +61,7 @@ const BlogAdmin = ({data}: PropsTypes) => {
     }).then(() => setIsLoading(false))
   }
   return (
-    <div className="min-h-[500px] cursor-pointer" onClick={() => handleRoute(`/blogs/${data._id}`)}>
+    <div className="group min-h-[500px] cursor-pointer" onClick={() => handleRoute(`/blogs/${data._id}`)}>
       <div className="relative flex-[0.5] h-[250px]">
         <Image 
           src={data.blogImage.imageURL}
@@ -80,7 +80,7 @@ const BlogAdmin = ({data}: PropsTypes) => {
           </p>
         </div>
         <div className="mt-2 mb-4 dark:text-gray-200 text-gray-700">
-          <h2 className="text-xl font-[800] mb-1">{data.blogTitle}</h2>
+          <h2 className="text-xl font-[800] mb-1 group-hover:text-blue-600">{data.blogTitle}</h2>
           <p className="text-sm font-medium dark:text-gray-400 text-gray-600 leading-[1.7] line-clamp-3">{data.blogDescriptions[0].descriptionContent}</p>
         </div>
         <div className="flexx flex-wrap">

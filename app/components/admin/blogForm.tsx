@@ -263,11 +263,11 @@ const BlogForm = ({dataEdit}: PropsTypes) => {
                 <small className="error-input">{errors.blogDescriptions?.[index]?.descriptionContent?.message}</small>
             </div>
             {index > 0 && (
-              <button type="button" className="button py-2 w-max mt-1" onClick={() => removeDesc(index)}>Remove</button>
+              <button type="button" className="button button-dark button-light py-2 w-max mt-1" onClick={() => removeDesc(index)}>Remove</button>
             )}
           </div>
         ))}
-        <button type="button" className="button py-2 w-max mt-2" onClick={() => appendDesc({
+        <button type="button" className="button button-dark button-light py-2 w-max mt-2" onClick={() => appendDesc({
           descriptionTitle: "",
           descriptionContent: ""
         })}>Add another description</button>

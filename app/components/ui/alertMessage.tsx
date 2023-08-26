@@ -15,4 +15,5 @@ const AlertMessage = ({children, classes, isSuccess, handleClose}: PropsTypes) =
     </div>
   )
 }
+
 export default AlertMessage
