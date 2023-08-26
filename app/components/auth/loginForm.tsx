@@ -53,7 +53,7 @@ const LoginForm = () => {
       </div>
   
       <div className="flex flex-col mb-5">
-        <label htmlFor="email" className="mb-2 text-gray-700 font-semibold text-lg">Email</label>
+        <label htmlFor="email" className="form-label dark:!text-gray-700">Email</label>
         <input type="email" id="email" 
           placeholder="Type your email here" 
           {...register("email", {
@@ -71,7 +71,7 @@ const LoginForm = () => {
       </div>
 
       <div className="flex flex-col">
-        <label htmlFor="password" className="mb-2 text-gray-700 font-semibold text-lg">Password</label>
+        <label htmlFor="password" className="form-label dark:!text-gray-700">Password</label>
         <div className="border border-[#ccc] text-gray-700 bg-white font-medium rounded-md px-3 py-2 flexx">
           <input 
             type={showPassword ? "text" : "password"} 
@@ -91,7 +91,7 @@ const LoginForm = () => {
           <small className="error-input dark:text-red-700">{errors.password?.message}</small>
         )}
       </div>
-      <button type="submit" disabled={isLoading} className={`button w-full mt-5 text-base flex-center ${isLoading ? "button-disabled" : "button-light"}`}>
+      <button type="submit" disabled={isLoading} className={`button w-full mt-5 text-base flex-center ${isLoading ? "button-disabled dark:!bg-gray-500 dark:!text-gray-200" : "button-light"}`}>
         {isLoading && <div className="button-loading"></div>}
         {isLoading ? "Waiting..." : "Submit"}
       </button>

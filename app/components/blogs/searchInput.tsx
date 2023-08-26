@@ -16,13 +16,9 @@ const SearchInput = () => {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)
   const handleSearch = () => {
     if(!searchTerm) {
-      toast.error("Please input some value in the field!")
+      router.push("/blogs")
     } else {
-      if(searchTerm.length < 3) {
-        toast.error("Minimum input 3 character or more!")
-      } else {
-        router.push(`/blogs/search?q=${searchTerm}`)
-      }
+      router.push(`/blogs/search?q=${searchTerm}`)
     }
   }
 
@@ -35,7 +31,7 @@ const SearchInput = () => {
       <div className="flex-center">
         <div className={`flexx w-[500px] mt-3 border ${isFocus ? "dark:border-gray-600 border-gray-400 border-2" : "dark:border-gray-600 border-[#ccc]"} pl-3 pr-1 rounded-lg`}>
           <input value={searchTerm} onChange={onChange} onFocus={onFocus} onBlur={onBlur} type="text" placeholder="Find specific blogs" className="bg-transparent border-none outline-none flex-1 py-2 mr-3 dark:text-gray-200 text-gray-700 dark:placeholder:text-gray-200 placeholder:text-gray-700 font-medium"/>
-          <button className="text-base px-3 py-1 button" onClick={handleSearch}>
+          <button className="text-base px-3 py-1 button button-dark button-light" onClick={handleSearch}>
             Search
           </button>
         </div>

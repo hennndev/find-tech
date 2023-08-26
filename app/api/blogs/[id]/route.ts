@@ -1,7 +1,7 @@
-import { Blogs } from "@/app/lib/models/blog.model"
 import { NextResponse } from 'next/server' 
-import { connectDB } from "@/app/lib/mongoose"
 import { v2 as cloudinary } from 'cloudinary'
+import { connectDB } from "@/app/lib/mongoose"
+import { Blogs } from "@/app/lib/models/blog.model"
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -18,12 +18,11 @@ export async function GET(request: Request, {params}: {params: {id: string}}) {
     return NextResponse.json({
       message: "Success get blog",
       data: blog
-    })
+    }, {status: 200})
   } catch (error) {
-    console.log(error)
     return NextResponse.json({
       message: "Failed get blog"
-    })    
+    }, {status: 400})    
   }
 }
 
@@ -40,11 +39,11 @@ export async function PUT(request: Request, {params: {id}}: {params: {id: string
     }
     return NextResponse.json({
       message: "Success update blog"
-    })
+    }, {status: 200})
   } catch (error) {
     return NextResponse.json({
       message: "Failed update blog"
-    })
+    }, {status: 400})
   }
 }
 
@@ -58,11 +57,10 @@ export async function DELETE(request: Request, {params: {id}}: {params: {id: str
     })
     return NextResponse.json({
       message: "Success delete blog"
-    })
+    }, {status: 200})
   } catch (error) {
-    console.log(error)
     return NextResponse.json({
       message: "Failed delete blog"
-    })
+    }, {status: 400})
   }
 }

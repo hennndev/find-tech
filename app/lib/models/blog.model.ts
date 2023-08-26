@@ -41,22 +41,6 @@ const blogSchema = new Schema({
       }
     }
   ],
-  blogComments: [
-    {
-      comment: {
-        type: String,
-        required: true
-      },
-      user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Users"
-      },
-      createdAt: {
-        type: Date,
-        required: true
-      } 
-    }
-  ]
 }, {timestamps: true})
 
 export const Blogs = mongoose.models.Blogs || mongoose.model("Blogs", blogSchema)

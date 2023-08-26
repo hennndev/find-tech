@@ -3,8 +3,9 @@ import React, { SyntheticEvent, useState } from 'react'
 import moment from 'moment'
 import Image from 'next/image'
 import Modal from '../ui/modal'
+import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
-import toast, { Toaster } from 'react-hot-toast'
+import { apiRoute } from '@/app/config/config'
 import { BlogTypes } from '@/app/types/BlogTypes.types'
 
 type PropsTypes = {
@@ -32,7 +33,7 @@ const BlogAdmin = ({data}: PropsTypes) => {
   }
   const deletePromise = (id: string, imageId: string) => {
     return new Promise(async(resolve, reject) => {
-      const req = await fetch(`http://localhost:3000/api/blogs/${id}`, {
+      const req = await fetch(`${apiRoute}/api/blogs/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json"
@@ -75,7 +76,7 @@ const BlogAdmin = ({data}: PropsTypes) => {
           <p className="text-sm dark:text-gray-300 text-gray-700">
             {data.blogAuthor} {" "}
             <span>&middot;</span> {" "} 
-            {moment(data.createdAt).startOf('day').fromNow()}
+            {moment(data.createdAt).startOf('minutes').fromNow()}
           </p>
         </div>
         <div className="mt-2 mb-4 dark:text-gray-200 text-gray-700">
@@ -96,7 +97,7 @@ const BlogAdmin = ({data}: PropsTypes) => {
       </div>
 
       {isModal && (
-        <Modal handleClose={(e) => !isLoading && handleClose(e)}>
+        <Modal>
           <div className="p-5 pb-2 text-center">
             <p className="dark:text-gray-200 text-gray-700 text-xl font-semibold">Are you sure want to delete this blog?</p>
             <p className="dark:text-red-500 text-red-600 mt-2 font-semibold">This blog will deleted permanently</p>

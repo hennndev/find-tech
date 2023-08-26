@@ -49,7 +49,7 @@ const SignupForm = () => {
       setIsError(error.message)
     } 
   }
-  const loginGoogle = () => signIn("google")
+  const loginGoogle = () => signIn("google", {callbackUrl: "/"})
   const handleShowPassword = (value: boolean) => setShowPassword(value)
   const handleShowPasswordConfirmation = (value: boolean) => setShowPasswordConfirmation(value)
 
@@ -70,13 +70,17 @@ const SignupForm = () => {
           </AlertMessage>
         )}
       </div>
-      {/* username */}
+      
       <div className="flex flex-col mb-5">
-        <label htmlFor="username" className="mb-2 text-gray-700 font-semibold text-lg">Username</label>
+        <label htmlFor="username" className="form-label dark:!text-gray-700">Username</label>
         <input type="text" id="username" 
           placeholder="Type your username here" 
           {...register("username", {
-            required: "Username field is required"
+            required: "Username field is required",
+            minLength: {
+              value: 3,
+              message: "Minimum length username is 3 character or more!"
+            }
           })}
           autoComplete="off"
           className="input-control"/>
@@ -84,9 +88,9 @@ const SignupForm = () => {
           <small className="error-input dark:text-red-700">{errors.username?.message}</small>
         )}
       </div>
-      {/* email */}
+      
       <div className="flex flex-col mb-5">
-        <label htmlFor="email" className="mb-2 text-gray-700 font-semibold text-lg">Email</label>
+        <label htmlFor="email" className="form-label dark:!text-gray-700">Email</label>
         <input type="email" id="email" 
           placeholder="Type your email here" 
           {...register("email", {
@@ -102,9 +106,9 @@ const SignupForm = () => {
           <small className="error-input dark:text-red-700">{errors.email?.message}</small>
         )}
       </div>
-      {/* password */}
+      
       <div className="flex flex-col mb-5">
-        <label htmlFor="password" className="mb-2 text-gray-700 font-semibold text-lg">Password</label>
+        <label htmlFor="password" className="form-label dark:!text-gray-700">Password</label>
         <div className="border border-[#ccc] text-gray-700 bg-white font-medium rounded-md px-3 py-2 flexx">
           <input 
             type={showPassword ? "text" : "password"} 
@@ -120,10 +124,13 @@ const SignupForm = () => {
             className="flex-1 mr-2 bg-transparent outline-none placeholder:text-gray-500 text-sm"/>
             {!showPassword ? <AiOutlineEyeInvisible className="text-xl cursor-pointer text-gray-700" onClick={() => handleShowPassword(true)}/> : <AiOutlineEye className="text-xl cursor-pointer text-gray-700" onClick={() => handleShowPassword(false)}/>}
         </div>
+        {errors.password?.message && (
+          <small className="error-input dark:text-red-700">{errors.password?.message}</small>
+        )}
       </div>
-      {/* password confirmation */}
+      
       <div className="flex flex-col">
-        <label htmlFor="passwordConfirmation" className="mb-2 text-gray-700 font-semibold text-lg">Password Confirmation</label>
+        <label htmlFor="passwordConfirmation" className="form-label dark:!text-gray-700">Password Confirmation</label>
         <div className="border border-[#ccc] text-gray-700 bg-white font-medium rounded-md px-3 py-2 flexx">
           <input type={showPasswordConfirmation ? "text" : "password"} id="passwordConfirmation" 
             placeholder="Type your password here" 
@@ -140,16 +147,15 @@ const SignupForm = () => {
             className="flex-1 mr-2 bg-transparent outline-none placeholder:text-gray-500 text-sm"/>
             {!showPasswordConfirmation ? <AiOutlineEyeInvisible className="text-xl cursor-pointer text-gray-700" onClick={() => handleShowPasswordConfirmation(true)}/> : <AiOutlineEye className="text-xl cursor-pointer text-gray-700" onClick={() => handleShowPasswordConfirmation(false)}/>}
         </div>
-       
         {errors.passwordConfirmation?.message && (
           <small className="error-input dark:text-red-700">{errors.passwordConfirmation?.message}</small>
         )}
       </div>
-      <button type="submit" disabled={isLoading} className={`button w-full mt-5 text-base flex-center ${isLoading ? "button-disabled" : "button-light"}`}>
+      <button type="submit" disabled={isLoading} className={`button w-full mt-5 text-base flex-center ${isLoading ? "button-disabled dark:!bg-gray-500 dark:!text-gray-200" : "button-light"}`}>
         {isLoading && <div className="button-loading"></div>}
         {isLoading ? "Waiting..." : "Submit"}
       </button>
-      <button type="button" className="button-platform" onClick={loginGoogle}>
+      <button type="button" disabled={isLoading} className="button-platform" onClick={loginGoogle}>
         Sign with Google <FcGoogle className="ml-3 text-[25px]"/>
       </button>
     </form>

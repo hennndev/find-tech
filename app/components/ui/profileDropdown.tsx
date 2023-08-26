@@ -20,7 +20,7 @@ const ProfileDropdown = ({image, name, closeNavbar}: PropsTypes) => {
       <Image src={image ? image : `https://api.multiavatar.com/${name}.png`} fill sizes="auto" quality={75} className="w-full h-full object-contain rounded-full" alt="img-account" onClick={handleDropdown}/>
       {openDropdown && (
         <div className="absolute z-[50] top-8 -left-20 dark:bg-gray-800 bg-white shadow-md rounded-md flex flex-col space-y-4 p-3">
-          <button className="buttonn button-danger text-white text-xs" onClick={() => signOut()}>Logout</button>
+          <button className="button button-danger text-white text-xs" onClick={() => signOut()}>Logout</button>
         </div>
       )}
     </div>

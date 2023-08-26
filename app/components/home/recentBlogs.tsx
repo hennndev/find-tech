@@ -30,7 +30,7 @@ const RecentBlogs = ({data}: PropsTypes) => {
             <p className="text-sm font-medium dark:text-gray-400 text-gray-700">
               {leftBlog.blogAuthor} {" "}
               <span>&middot;</span> {" "} 
-              {moment(leftBlog.createdAt).startOf('day').fromNow()}
+              {moment(leftBlog.createdAt).startOf('minutes').fromNow()}
             </p>
             <div className="mt-1 mb-2 dark:text-gray-200 text-gray-700">
               <h2 className="text-2xl font-[800] mb-1 group-hover:underline group-hover:text-blue-600">{leftBlog.blogTitle}</h2>
@@ -59,7 +59,7 @@ const RecentBlogs = ({data}: PropsTypes) => {
                 <p className="text-xs xl:text-sm font-medium dark:text-gray-400 text-gray-700">
                   {blog.blogAuthor} {" "}
                   <span>&middot;</span> {" "} 
-                  {moment(blog.createdAt).startOf('day').fromNow()}
+                  {moment(blog.createdAt).startOf('minutes').fromNow()}
                 </p>
                 <div className="mt-1 mb-2 dark:text-gray-200 text-gray-700">
                   <h2 className="text-lg xl:text-xl font-[800] mb-1 line-clamp-2 xl:line-clamp-3 group-hover:underline group-hover:text-blue-600">{blog.blogTitle}</h2>

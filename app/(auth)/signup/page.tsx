@@ -5,8 +5,8 @@ import { getServerSession } from 'next-auth'
 import ImageBox from '@/app/components/auth/imageBox'
 import ArrowBack from '@/app/components/auth/arrowBack'
 import SignupForm from '@/app/components/auth/signupForm'
-import PageContainer from '@/app/components/wrapper/pageContainer'
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import PageContainer from '@/app/components/wrapper/pageContainer'
 
 export const metadata = {
   title: "Signup page"

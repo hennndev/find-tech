@@ -10,6 +10,7 @@ type PropsTypes = {
 }
 const Blog = ({data}: PropsTypes) => {
   const router = useRouter()
+  console.log(new Date(data.createdAt))
   return (
     <div className="min-h-[450px] cursor-pointer group" onClick={() => router.push(`/blogs/${data._id}`)}>
       <div className="relative flex-[0.5] h-[250px]">
@@ -25,7 +26,7 @@ const Blog = ({data}: PropsTypes) => {
         <p className="text-sm font-medium dark:text-gray-400 text-gray-700">
           {data.blogAuthor} {" "}
           <span>&middot;</span> {" "} 
-          {moment(data.createdAt).startOf('day').fromNow()}
+          {moment(data.createdAt).startOf('minutes').fromNow()}
         </p>
         <div className="mt-1 mb-2 dark:text-gray-200 text-gray-700">
           <h2 className="text-xl font-[800] mb-1 group-hover:underline group-hover:text-blue-600">{data.blogTitle}</h2>

@@ -51,7 +51,7 @@
 
     /* form */
     .form-label {
-        @apply text-lg font-semibold mb-2 dark:text-gray-300 text-gray-700
+        @apply text-lg font-semibold mb-1 dark:text-gray-300 text-gray-700
     }
     .input-control {
         @apply border border-[#ccc] text-gray-700 bg-transparent placeholder:text-gray-500 font-medium outline-none rounded-md px-3 py-2 text-sm
@@ -86,7 +86,7 @@
         @apply dark:bg-gray-500 dark:hover:bg-gray-700 bg-gray-700 hover:bg-gray-900 transition duration-300
     }
     .button-disabled {
-        @apply dark:bg-gray-800 hover:bg-gray-500 border-transparent bg-gray-500 dark:text-gray-500 text-gray-100 cursor-not-allowed
+        @apply dark:bg-gray-800 hover:bg-gray-500 border-transparent bg-gray-500 dark:text-gray-500 text-gray-100 cursor-wait
     }
     .button-loading {
         @apply inline-block h-5 w-5 animate-spin rounded-full border-[3px] border-solid border-current border-r-transparent motion-reduce:animate-[spin_1.5s_linear_infinite] mr-2

@@ -3,10 +3,8 @@ import { NextResponse } from 'next/server'
 import { connectDB } from '@/app/lib/mongoose'
 import { Users } from '@/app/lib/models/user.model'
 
-
-export async function POST(request: Request, response: Response) {
+export async function POST(request: Request) {
   await connectDB()
-
   try {
     const { username, email, password } = await request.json()
     const checkEmail = await Users.findOne({email: email})
@@ -25,11 +23,11 @@ export async function POST(request: Request, response: Response) {
       await Users.create(newAccount)
       return NextResponse.json({
         message: "Success, create account!"
-      })
+      }, {status: 201})
     }
   } catch (error: any) {
     return NextResponse.json({
       error: error.message
-    })
+    }, {status: 400})
   }
 }

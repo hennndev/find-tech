@@ -11,7 +11,7 @@ import { usePreviewImage } from '@/app/hooks/usePreviewImage'
 import { AiFillCloseSquare, AiFillCloseCircle } from 'react-icons/ai'
 
 type PropsTypes = {
-  data?: BlogTypes
+  dataEdit?: BlogTypes
 } 
 type FormValues = {
   blogTitle: string
@@ -23,7 +23,7 @@ type FormValues = {
 }
 const imageFormat = ["jpeg", "png"]
 
-const BlogForm = ({data}: PropsTypes) => {
+const BlogForm = ({dataEdit}: PropsTypes) => {
 
   const [isLoading, setIsLoading] = useState(false)
   const form = useForm<FormValues>({
@@ -87,7 +87,7 @@ const BlogForm = ({data}: PropsTypes) => {
     blogDescriptions?: {descriptionTitle: string, descriptionContent: string}[]
   } , dataImage: File | null) => {
     return new Promise(async(resolve, reject) => {
-      const dataBlog = data as BlogTypes
+      const dataBlog = dataEdit as BlogTypes
       if(dataImage) {
         const fileImage = dataImage as File
         const image = await uploadImage(fileImage)
@@ -115,7 +115,7 @@ const BlogForm = ({data}: PropsTypes) => {
     setIsLoading(true)
     const {blogImage, blogCategoryTerm, ...dataBlog} = data
     const file = (blogImage as FileList)[0]
-    const promise = data? uploadEditBlog(dataBlog, typeof(file) !== "string" ? file : null) : uploadNewBlog(dataBlog, file)
+    const promise = dataEdit ? uploadEditBlog(dataBlog, typeof(file) !== "string" ? file : null) : uploadNewBlog(dataBlog, file)
     toast.promise(promise, {
       loading: "Waiting",
       success: "Success upload new blog",
@@ -138,21 +138,21 @@ const BlogForm = ({data}: PropsTypes) => {
   }
 
   useEffect(() => {
-    if(data) {
-      setValue("blogTitle", data.blogTitle)
-      setValue("blogAuthor", data.blogAuthor)
-      setValue("blogCategories", data.blogCategories)
-      setValue("blogDescriptions", data.blogDescriptions)
-      setValue("blogImage", data.blogImage.imageURL)
-      setPrevImage(data.blogImage.imageURL)
+    if(dataEdit) {
+      setValue("blogTitle", dataEdit.blogTitle)
+      setValue("blogAuthor", dataEdit.blogAuthor)
+      setValue("blogCategories", dataEdit.blogCategories)
+      setValue("blogDescriptions", dataEdit.blogDescriptions)
+      setValue("blogImage", dataEdit.blogImage.imageURL)
+      setPrevImage(dataEdit.blogImage.imageURL)
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data])
+  }, [dataEdit])
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Toaster/>
-      {/* blog title */}
+  
       <div className="flex flex-col mb-6">
         <label htmlFor="blogTitle" className="form-label">Blog title</label>
         <input 
@@ -165,7 +165,6 @@ const BlogForm = ({data}: PropsTypes) => {
         <small className="error-input">{errors.blogTitle?.message}</small>
       </div>
 
-      {/* blog author */}
       <div className="flex flex-col mb-6">
         <label htmlFor="blogTitle" className="form-label">Blog author</label>
         <input 
@@ -178,7 +177,6 @@ const BlogForm = ({data}: PropsTypes) => {
         <small className="error-input">{errors.blogAuthor?.message}</small>
       </div>
   
-      {/* blog categories */}
       <div className="flex flex-col mb-6">
         <label htmlFor="blogTitle" className="form-label">Blog categories</label>
         <div className="flexx">
@@ -193,7 +191,7 @@ const BlogForm = ({data}: PropsTypes) => {
                 blogCategoriesRequired: () => fields.length > 0 || "Blog categories is required, please type 1 or more category for this blog!"
               }
             })}/>
-          <button type="button" className="button py-2" disabled={watch("blogCategoryTerm") === ""} onClick={handleAddCategory}>Add</button>
+          <button type="button" className="button button-dark button-light py-2" disabled={watch("blogCategoryTerm") === ""} onClick={handleAddCategory}>Add</button>
         </div>
         {fields.length > 0 && (
           <div className="flexx flex-wrap mt-3">    
@@ -208,8 +206,6 @@ const BlogForm = ({data}: PropsTypes) => {
         <small className="error-input">{errors.blogCategoryTerm?.message}</small>
       </div>
 
-
-      {/* blog image */}
       <div className="flex flex-col mb-6">
         <label htmlFor="blogImage" className="form-label">Blog image</label>
         <input 
@@ -241,8 +237,6 @@ const BlogForm = ({data}: PropsTypes) => {
         )}
       </div>
       
-
-      {/* blog descriptions */}
       <div className="flex flex-col mb-6">
         <label className="form-label">Blog description</label>
         {fieldsDesc.map((field, index) => (
@@ -279,7 +273,7 @@ const BlogForm = ({data}: PropsTypes) => {
         })}>Add another description</button>
       </div>
       
-      <button type="submit" disabled={isLoading} className={`border-none outline-none ${isLoading ? "button-disabled" : "button-primary"} text-white px-3 py-2 rounded-md w-full font-semibold text-lg flex-center`}>
+      <button type="submit" disabled={isLoading} className={`button ${isLoading ? "button-disabled" : "button-primary"} w-full font-semibold text-lg`}>
        {isLoading && (
          <div className="button-loading"/>
        )}
@@ -288,5 +282,4 @@ const BlogForm = ({data}: PropsTypes) => {
     </form>
   )
 }
-
 export default BlogForm
